@@ -10,6 +10,7 @@ cp $EZHILSRC/editor/res -ar ./
 cp $EZHILSRC/editor/examples -ar ./
 cp $EZHILSRC/editor/xmlbook -ar ./
 cp $EZHILSRC/editor/*.ico ./
+cp $EZHILSRC/editor/*.py ./
 
 pyinstaller --log-level=DEBUG --icon=ezhil.ico ezhili.py
 pyinstaller --windowed --log-level=DEBUG --icon=ezhil16.ico ezhuthi.spec
@@ -18,4 +19,3 @@ cd dist/
 BDIR=ezhil-`date +'%m%d%y'`
 mkdir $BDIR
 mv ezhuthi $BDIR
-

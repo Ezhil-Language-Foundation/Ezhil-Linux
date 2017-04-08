@@ -4,14 +4,23 @@
 
 import os
 import site
+import sys
+
+PYTHON3 = (sys.version[0] == '3')
+if PYTHON3:
+    unicode = str
 
 block_cipher = None
 
-typelib_path = os.path.join(site.getsitepackages()[1], 'gnome', 'lib', 'girepository-1.0')
+#if PYTHON3:
+typelib_path = os.path.join(site.getsitepackages()[1], 'gi')
+#else:
+#    typelib_path = os.path.join(site.getsitepackages()[1], 'gnome','lib','girepository-1.0')
+
 binaries=[(os.path.join(typelib_path, tl), 'gi_typelibs') for tl in os.listdir(typelib_path)]
 
 a = Analysis(['ezhuthi.py'],
-             pathex=['editor'],
+             pathex=[os.getcwd()],
              binaries=binaries,
              datas=[],
              hiddenimports=[],
